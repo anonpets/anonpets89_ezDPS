@@ -26,9 +26,14 @@ To build the rust codes, run
 ```
 cargo +nightly build --target x86_64-apple-darwin
 ```
-
 * A toy example on ECG dataset
+* 
 We first provide a toy example on ECG dataset.
+All the circuits and witnesses for this example are given. To prove and verify, run
+
+```
+cargo +nightly run main.rs --target x86_64-apple-darwin
+```
 
 * Other datasets
 The detailed instructions are coming soon.
