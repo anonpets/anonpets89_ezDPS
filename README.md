@@ -16,6 +16,11 @@ For 100-classes, run
 ```
 python cifar100/train.py
 ```
+
+For 64-classes, run 
+```
+python cifar100/train_64.py
+```
 We provide the well-trained parameters at https://drive.google.com/file/d/1QkLIS4UIKkGBKncBt7fm-GTyIMYTHkT6/view?usp=sharing
 
 * UCR-ECG Dataset and LFW Dataset
