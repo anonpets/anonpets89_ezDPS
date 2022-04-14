@@ -127,26 +127,3 @@ y_pred = clf.predict(X_test_pca)
 print("done in %0.3fs" % (time() - t0))
 print("Accuracy:", accuracy_score(test_label, y_pred))
 
-# correct_classified = []
-# for i in range(len(test_label_or)):
-#     if test_label_or[i] == y_pred[i]:
-#         correct_classified.append(i)
-# np.savetxt('shuffledata_64.txt', correct_classified, fmt='%i')
-# print(correct_classified)
-
-# print("Predicting people's names on the training set")
-#
-# X_train_dwt = wavelets_f(train_sub_sub_data)
-# X_train_pca_new = pca.transform(X_train_dwt)
-# y_pred_train = clf.predict(X_train_pca_new)
-# print("done in %0.3fs" % (time() - t0))
-# print("Accuracy:", accuracy_score(train_sub_sub_label, y_pred_train))
-#
-# # #############################################################################
-# # accuracy on the mix dataset
-# print("Predicting on the mix dataset")
-# X_test_mix_dwt = wavelets_f(test_mix_data)
-# X_test_mix_pca = pca.transform(X_test_mix_dwt)
-# y_pred_mix = clf.predict(X_test_mix_pca)
-# print("Accuracy:", accuracy_score(test_mix_label, y_pred_mix))
-
