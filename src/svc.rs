@@ -44,13 +44,18 @@ pub fn svc_gadget() -> (
         temp = temp * two;
         Po2.push(temp.to_bytes());
     }
-    // Powers of e^(-1). Poe[i] = e^(2^l). 为了避免溢出，这里取e等于1
+    // Powers of e^(-1). Poe[i] = e^(2^l).
+    let path_poe = "./data/svc_fixpoint/poe_fixpoint.txt";
+    let poe = load_data_i64(path_poe);
     let mut Poe = Vec::new();
-    let mut e = Scalar::from(1u32);
-    Poe.push(e.to_bytes());
-    for i in 0..63 {
-        e = e * e;
-        Poe.push(e.to_bytes())
+    // let mut e = Scalar::from(1u32);
+    // Poe.push(e.to_bytes());
+    for ele in poe {
+        // println!("{:?}", ele);
+        if ele < 0 {
+            Poe.push((-Scalar::from(-ele as u64)).to_bytes());
+        }
+        else { Poe.push(Scalar::from(ele as u64).to_bytes()); }
     }
 
     //construct the constraints
