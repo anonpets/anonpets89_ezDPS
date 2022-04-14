@@ -16,3 +16,5 @@ We provide the well-trained parameters at https://drive.google.com/file/d/1QkLIS
 
 ## The Performance of ezDPS
 * A toy example on ECG dataset
+We first provide a toy example on ECG dataset.
+
