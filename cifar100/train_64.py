@@ -55,18 +55,18 @@ print(np.array(train_sub_data).shape)
 ########################################################################
 test_data = []
 test_label = []
-ratio = 0.04
+ratio = 0.045
 shuf = np.loadtxt('shuffledata_64.txt', dtype=int)
 for i in shuf:
     print(i)
-    test_data.append(test_data_or[i])
-    test_label.append(test_label_or[i])
-num = int(ratio * len(test_label_or))
+    test_data.append(test_sub_data[i])
+    test_label.append(test_sub_label[i])
+num = int(ratio * len(test_sub_label))
 count = 0
-for i in range(len(test_label_or)):
+for i in range(len(test_sub_label)):
     if i not in shuf and count < num:
-        test_data.append(test_data_or[i])
-        test_label.append(test_label_or[i])
+        test_data.append(test_sub_data[i])
+        test_label.append(test_sub_label[i])
         count = count + 1
 # ######################################################################
 
@@ -74,7 +74,7 @@ for i in range(len(test_label_or)):
 # pca
 n_components = 0.95
 # t0 = time()
-# pca = PCA(n_components=n_components, whiten=True).fit(train_data)
+# pca = PCA(n_components=n_components, whiten=True).fit(train_sub_data)
 # print("done in %0.3fs" % (time() - t0))
 
 # filename_pac = 'pca_64.sav'
@@ -83,12 +83,12 @@ n_components = 0.95
 # print("pca components: ", pca.components_.shape)
 
 
-print("Projecting the input data on the eigenfaces orthonormal basis")
-t0 = time()
+# print("Projecting the input data on the eigenfaces orthonormal basis")
+# t0 = time()
 pca = pickle.load(open('pca_64.sav', 'rb'))
-# X_train_pca = pca.transform(train_data)
+# X_train_pca = pca.transform(train_sub_data)
 
-print("done in %0.3fs" % (time() - t0))
+# print("done in %0.3fs" % (time() - t0))
 
 # ########################################################################
 # svc
@@ -104,7 +104,7 @@ print("done in %0.3fs" % (time() - t0))
 #     SVC(kernel='rbf', class_weight='balanced'), param_grid
 # )
 # print(np.array(train_label).shape)
-# clf = clf.fit(X_train_pca, train_label)
+# clf = clf.fit(X_train_pca, train_sub_label)
 # save the model to disk
 # filename = 'pipeline_64.sav'
 # pickle.dump(clf, open(filename, 'wb'))
@@ -126,4 +126,3 @@ X_test_pca = pca.transform(X_test_dwt)
 y_pred = clf.predict(X_test_pca)
 print("done in %0.3fs" % (time() - t0))
 print("Accuracy:", accuracy_score(test_label, y_pred))
-
