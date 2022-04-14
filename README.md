@@ -7,6 +7,11 @@ The machine learning parts are implemented using Python 3.6, with sklearn packag
 
 ## Training and Testing of the ML Algorithms
 * Cifar-100 Dataset
+The standard dataset can be downloaded from https://www.cs.toronto.edu/~kriz/cifar.html. We use the python version of Cifar-100.
+For 100-classes, run
+```
+python CIFAR/train.py
+```
 
 ## The Performance of ezDPS
 * A toy example on ECG dataset
