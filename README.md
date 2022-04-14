@@ -22,6 +22,11 @@ We provide the well-trained parameters at https://drive.google.com/file/d/1QkLIS
 The detailed instructions are coming soon.
 
 ## The Performance of ezDPS
+To build the rust codes, run
+```
+cargo +nightly build --target x86_64-apple-darwin
+```
+
 * A toy example on ECG dataset
 We first provide a toy example on ECG dataset.
 
