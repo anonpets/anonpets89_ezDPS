@@ -55,26 +55,26 @@ print(np.array(train_sub_data).shape)
 ########################################################################
 test_data = []
 test_label = []
-ratio = 0.02
+ratio = 0.035
 shuf = np.loadtxt('shuffledata_32.txt', dtype=int)
 for i in shuf:
     print(i)
-    test_data.append(test_data_or[i])
-    test_label.append(test_label_or[i])
-num = int(ratio * len(test_label_or))
+    test_data.append(test_sub_data[i])
+    test_label.append(test_sub_label[i])
+num = int(ratio * len(test_sub_label))
 count = 0
-for i in range(len(test_label_or)):
+for i in range(len(test_sub_label)):
     if i not in shuf and count < num:
-        test_data.append(test_data_or[i])
-        test_label.append(test_label_or[i])
+        test_data.append(test_sub_data[i])
+        test_label.append(test_sub_label[i])
         count = count + 1
 # ######################################################################
 
 # #######################################################################
 # pca
-n_components = 0.95
+# n_components = 0.95
 # t0 = time()
-# pca = PCA(n_components=n_components, whiten=True).fit(train_data)
+# pca = PCA(n_components=n_components, whiten=True).fit(train_sub_data)
 # print("done in %0.3fs" % (time() - t0))
 
 # filename_pac = 'pca_32.sav'
@@ -84,11 +84,11 @@ n_components = 0.95
 
 
 # print("Projecting the input data on the eigenfaces orthonormal basis")
-# t0 = time()
+t0 = time()
 pca = pickle.load(open('pca_32.sav', 'rb'))
-# X_train_pca = pca.transform(train_data)
+# X_train_pca = pca.transform(train_sub_data)
 
-# print("done in %0.3fs" % (time() - t0))
+print("done in %0.3fs" % (time() - t0))
 
 # ########################################################################
 # svc
@@ -104,7 +104,7 @@ pca = pickle.load(open('pca_32.sav', 'rb'))
 #     SVC(kernel='rbf', class_weight='balanced'), param_grid
 # )
 # print(np.array(train_label).shape)
-# clf = clf.fit(X_train_pca, train_label)
+# clf = clf.fit(X_train_pca, train_sub_label)
 # save the model to disk
 # filename = 'pipeline_32.sav'
 # pickle.dump(clf, open(filename, 'wb'))
@@ -114,7 +114,7 @@ pca = pickle.load(open('pca_32.sav', 'rb'))
 # print("Best estimator found by grid search:")
 # print(clf.best_estimator_)
 # print("support vectors ", clf.support_vectors_.shape)
-clf = pickle.load(open('pipeline_64.sav', 'rb'))
+clf = pickle.load(open('pipeline_32.sav', 'rb'))
 # #############################################################################
 # Quantitative evaluation of the model quality on the test set
 
