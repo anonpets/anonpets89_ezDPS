@@ -12,6 +12,7 @@ For 100-classes, run
 ```
 python cifar100/train.py
 ```
+We provide the well-trained parameters at https://drive.google.com/file/d/1QkLIS4UIKkGBKncBt7fm-GTyIMYTHkT6/view?usp=sharing
 
 ## The Performance of ezDPS
 * A toy example on ECG dataset
